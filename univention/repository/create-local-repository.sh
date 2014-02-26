@@ -9,9 +9,13 @@
 WWW_BASE="/var/www/repository/3.2/maintained/component"
 COMP="zarafa/all"
 KEYID=$(sed -ne 's/.* KEY_CREATED P \([0-9A-F]\+\) apt$/\1/p' /root/apt.fpr)
-USER=username-in-portal
-PASSWORD=password-of-user
-ZARAFADL="https://download.zarafa.com/supported/beta/7.1/7.1.8rc1-43691/zarafa-archiver-7.1.8rc1-43691-ucs-3.0-x86_64.tar.gz https://download.zarafa.com/supported/beta/7.1/7.1.8rc1-43691/zarafa-archiver-7.1.8rc1-43691-ucs-3.0-i386.tar.gz https://download.zarafa.com/supported/beta/7.1/7.1.8rc1-43691/zcp-7.1.8rc1-43691-ucs-3.0-i386-supported.tar.gz https://download.zarafa.com/supported/beta/7.1/7.1.8rc1-43691/zcp-7.1.8rc1-43691-ucs-3.0-x86_64-supported.tar.gz https://download.zarafa.com/supported/beta/7.1/7.1.8rc1-43691/zarafa-ws-7.1.8rc1-43691-ucs-3.0-i386.tar.gz https://download.zarafa.com/supported/beta/7.1/7.1.8rc1-43691/zarafa-ws-7.1.8rc1-43691-ucs-3.0-x86_64.tar.gz"
+USER=		# username in portal.zarafa.com
+PASSWORD=	# password in portal.zarafa.com
+if [ -e portal.secret ]; then
+	echo "using external file for usernames"
+	. "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/portal.secret
+fi
+ZARAFADL="https://download.zarafa.com/supported/final/7.1/7.1.8-44004/zarafa-archiver-7.1.8-44004-ucs-3.0-i386.tar.gz https://download.zarafa.com/supported/final/7.1/7.1.8-44004/zarafa-archiver-7.1.8-44004-ucs-3.0-x86_64.tar.gz https://download.zarafa.com/supported/final/7.1/7.1.8-44004/zcp-7.1.8-44004-ucs-3.0-i386-supported.tar.gz https://download.zarafa.com/supported/final/7.1/7.1.8-44004/zcp-7.1.8-44004-ucs-3.0-x86_64-supported.tar.gz"
 
 if [ ! -e /root/apt.fpr ]; then
 	echo "please generate key first"
