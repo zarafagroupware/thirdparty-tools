@@ -32,4 +32,5 @@ univention-directory-manager settings/extended_attribute create "$@" --ignore_ex
 	--set syntax=string \
 	--set mayChange=1 \
         --set ldapMapping=zarafaEnabledFeatures \
-        --set multivalue=1
+        --set multivalue=1 \
+	--set tabPosition=99
