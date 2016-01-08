@@ -6,6 +6,7 @@
 
 eval "$(ucr shell)"
 
+# Drop down for values. WIP
 #univention-directory-manager settings/syntax create --ignore_exists \
 #        --position "cn=zarafa,cn=custom attributes,cn=univention,$ldap_base" \
 #        --set name=z4uEnabledFeatureSyntax \
@@ -15,6 +16,8 @@ eval "$(ucr shell)"
 #        --set ldapvalue="cn" \
 #        --set viewonly=FALSE \
 #        --set addEmptyValue=1
+#
+#        #--set syntax=z4uEnabledFeatureSyntax \
 
 univention-directory-manager settings/extended_attribute create "$@" --ignore_exists \
         --position "cn=zarafa,cn=custom attributes,cn=univention,$ldap_base" \
@@ -23,11 +26,10 @@ univention-directory-manager settings/extended_attribute create "$@" --ignore_ex
         --set tabName="Zarafa" \
         --set shortDescription="Enable specific features for User" \
         --set longDescription="Enable specific features for User" \
-        --set translationShortDescription='"de_DE" "Aktiviere spezifische Features (imap/pop3) für Benutzer"' \
-        --set translationLongDescription='"de_DE" "Aktiviere spezifische Features (imap/pop3) für Benutzer"' \
+        --set translationShortDescription='"de_DE" "Aktiviere spezifische Features (imap/pop3/mobile) für Benutzer"' \
+        --set translationLongDescription='"de_DE" "Aktiviere spezifische Features (imap/pop3/mobile) für Benutzer"' \
         --set objectClass=zarafa-user \
 	--set syntax=string \
-        #--set syntax=z4uEnabledFeatureSyntax \
 	--set mayChange=1 \
         --set ldapMapping=zarafaEnabledFeatures \
         --set multivalue=1
